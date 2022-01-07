@@ -1,0 +1,65 @@
+    {% include 'header.html' %}
+
+    <br>
+    <h1>Tabla de personas ingresadas</h1>
+    <br>
+    <a class="btn btn-success" href="{{url_for('create') }}"> Create </a>
+    <br><br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in empleados %}
+            <tr>
+                <td> {{ registro[0] }}</td>
+
+                <td>
+                    <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=registro[3]) }}">
+                </td>
+
+                <td> {{ registro[1] }}</td>
+                <td> {{ registro[2] }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/edit/{{registro[0]}}" >Editar</a>
+                    |
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+
+                    <!----modal starts here--->
+                        <div id="deleteModal" class="modal fade" role='dialog'>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Eliminar registro </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Seguro que quieres eliminar este registro?</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/destroy/{{registro[0]}}">
+                                            <input type="submit" class="btn btn-danger" value="Eliminar Usuario">
+                                        </form>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <span id= 'deleteButton'></span>
+                                    </div>
+
+                                </div>
+                              </div>
+                          </div>
+                        <!--Modal ends here--->
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}

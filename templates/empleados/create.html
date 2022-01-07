@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+
+
+<form id="news" method="post" action="/store" enctype="multipart/form-data">
+    <div class="card-header">
+    Ingresar Empleados
+    </div>
+
+    <div class="card-body">
+        <div class="card-title text-center">
+            Datos del empleado
+        </div>
+        <div class="card-text">
+
+            <div class="form-group">
+                <label for="txtNombre">Nombre:</label>
+                <input class="form-control" type="text" name="txtNombre" id="txtNombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtNombre">Correo:</label>
+                 <input class="form-control" type="email" name="txtCorreo" id="txtCorreo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtFoto">Foto:</label>
+                <input class="form-control" type="file" name="txtFoto" id="txtFoto" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-success">
+                |
+                <a href="{{ url_for('index') }}" class="btn btn-warning">Regresar</a>
+            </div>
+
+
+        </div>
+    </div>
+</form>
+
+{% include 'footer.html' %}
