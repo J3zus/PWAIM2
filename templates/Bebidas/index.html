@@ -1,38 +1,48 @@
     {% include 'header.html' %}
 
+    <!-----------------------------------------            BEBIDAS         ------------------------------------->
+
+    <hr>
     <br>
-    <h1>Tabla de personas ingresadas</h1>
+    <h1>Bebidas</h1>
     <br>
-    <a class="btn btn-success" href="{{url_for('create') }}"> Create </a>
-    <br><br>
-    <table class="table table-light">
+    <a class="btn btn-success" href="{{url_for('createbebidas') }}"> Añadir </a>
+    <br>
+    <br>
+    <table class="table table-primary">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Foto</th>
                 <th>Nombre</th>
-                <th>Correo</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            {% for registro in empleados %}
+            {% for registro in bebidas %}
             <tr>
                 <td> {{ registro[0] }}</td>
 
                 <td>
-                    <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=registro[3]) }}">
+                    <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=registro[6]) }}">
                 </td>
 
                 <td> {{ registro[1] }}</td>
                 <td> {{ registro[2] }}</td>
+                <td> {{ registro[3] }}</td>
+                <td> {{ registro[4] }}</td>
+                <td> {{ registro[5] }}</td>
                 <td>
-                    <a class="btn btn-outline-primary" href="/edit/{{registro[0]}}" >Editar</a>
+                    <a class="btn btn-outline-primary" href="/editbebidas/{{registro[0]}}" >Editar</a>
                     |
-                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal1">Eliminar</button>
 
                     <!----modal starts here--->
-                        <div id="deleteModal" class="modal fade" role='dialog'>
+                        <div id="deleteModal1" class="modal fade" role='dialog'>
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -43,7 +53,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/destroy/{{registro[0]}}">
+                                        <form action="/destroybebidas/{{registro[0]}}">
                                             <input type="submit" class="btn btn-danger" value="Eliminar Usuario">
                                         </form>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -62,4 +72,4 @@
         </tbody>
     </table>
 
-    {% include 'footer.html' %}
+{% include 'footer.html' %}

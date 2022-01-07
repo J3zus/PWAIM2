@@ -1,20 +1,20 @@
 {% include 'header.html' %}
 
-{% for item in empleados %}
+{% for item in botanas %}
 
-<form method="post" action="/update" enctype="multipart/form-data">
+<form method="post" action="/updatebotana" enctype="multipart/form-data">
     <div class="card-header">
-        Modificar empleado
+        Modificar botana
     </div>
 
     <div class="card-body">
         <div class="card-title text-center">
-            Datos del empleado
+            Datos de la botana
         </div>
         <div class="card-text">
 
             <div class="form-group">
-                <label>Numero de empleado:</label>
+                <label>Numero de identificacion:</label>
                 <input type="text" value="{{ item[0] }}" name="txtID" id="txtID" readonly>
             </div>
 
@@ -25,19 +25,33 @@
                 <input class="form-control" type="text" value="{{ item[1] }}" name="txtNombre" id="txtNombre">
             </div>
 
-            <br><hr>
+            <br>
 
             <div class="form-group">
-                <label for="txtNombre">Correo:</label>
-                <input class="form-control" type="email" value="{{ item[2] }}" name="txtCorreo" id="txtCorreo">
+                <label for="txtdescripcion">Descripcion:</label>
+                 <input class="form-control" type="text" value="{{item[3]}}"name="txtdescripcion" id="txtdescripcion">
             </div>
 
-            <br><hr>
+            <br>
+
+            <div class="form-group">
+                <label for="txtcantidad">Cantidad:</label>
+                 <input class="form-control" type="number" value="{{item[4]}}"name="txtcantidad" id="txtcantidad" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtprecio">Precio ($):</label>
+                 <input class="form-control" type="number" value="{{item[2]}}"name="txtprecio" id="txtprecio" required>
+            </div>
+
+            <br>
 
             <div class="form-group">
                 <label for="txtFoto">Foto:</label>
                 <br>
-                <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=item[3]) }}">
+                <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=item[5]) }}">
                 <br><br>
                 <input class="form-control" type="file" name="txtFoto" id="txtFoto">
             </div>

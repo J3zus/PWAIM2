@@ -1,14 +1,14 @@
 {% include 'header.html' %}
 
 
-<form id="news" method="post" action="/store" enctype="multipart/form-data">
+<form id="news" method="post" action="/store2" enctype="multipart/form-data">
     <div class="card-header">
-    Ingresar Empleados
+    Ingresar botanas
     </div>
 
     <div class="card-body">
         <div class="card-title text-center">
-            Datos del empleado
+            Datos de la botana
         </div>
         <div class="card-text">
 
@@ -18,8 +18,18 @@
             </div>
 
             <div class="form-group">
-                <label for="txtNombre">Correo:</label>
-                 <input class="form-control" type="email" name="txtCorreo" id="txtCorreo" required>
+                <label for="txtdescripcion">Descripcion:</label>
+                 <input class="form-control" type="text" name="txtdescripcion" id="txtdescripcion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtprecio">Precio ($):</label>
+                 <input class="form-control" type="number" name="txtprecio" id="txtprecio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtcantidad">Cantidad:</label>
+                 <input class="form-control" type="number" name="txtcantidad" id="txtcantidad" required>
             </div>
 
             <div class="form-group">

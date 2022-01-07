@@ -1,0 +1,69 @@
+{% include 'header.html' %}
+
+{% for item in reservaciones %}
+
+<form method="post" action="/updatereservacion" enctype="multipart/form-data">
+    <div class="card-header">
+        Modificar reservacion
+    </div>
+
+    <div class="card-body">
+        <div class="card-title text-center">
+            Datos de la reservacion
+        </div>
+        <div class="card-text">
+
+            <div class="form-group">
+                <label>Numero de identificacion:</label>
+                <input type="text" value="{{ item[0] }}" name="txtID" id="txtID" readonly>
+            </div>
+
+            <br><hr>
+
+            <div class="form-group">
+                <label for="txtNombre">Nombre:</label>
+                <input class="form-control" type="text" value="{{ item[1] }}" name="txtNombre" id="txtNombre">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtMesa">Mesa:</label>
+                 <input class="form-control" type="number" value="{{item[2]}}"name="txtMesa" id="txtMesa">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtFecha">Fecha:</label>
+                <input class="form-control" type="date" value="{{item[3]}}"name="txtFecha" id="txtFecha" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtHora">Hora:</label>
+                <input class="form-control" type="time" value="{{item[4]}}"name="txtHora" id="txtHora" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtprecio">Precio ($):</label>
+                 <input class="form-control" type="number" value="{{item[5]}}"name="txtprecio" id="txtprecio" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn btn-success">
+                |
+                <a href="{{ url_for('index') }}" class="btn btn-warning">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endfor %}
+
+{% include 'footer.html' %}

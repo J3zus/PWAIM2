@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+
+<!-----------------------------------------            RESERVACIONES         --------------------------------------------->
+
+<script type="text/javascript">
+    function startTime(){
+    today=new Date();
+    h=today.getHours();
+    m=today.getMinutes();
+    s=today.getSeconds();
+    m=checkTime(m);
+    s=checkTime(s);
+    document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
+    t=setTimeout('startTime()',500);}
+    function checkTime(i)
+    {if (i<10) {i="0" + i;}return i;}
+    window.onload=function(){startTime();}
+
+    var d = new Date();
+    document.write('<br>Fecha: '+d.getDate(),'&nbsp;&nbsp;&nbsp; Dia de la semana: '+d.getDay(),'&nbsp;&nbsp;&nbsp; Mes (0 al 11): '+d.getMonth(),'&nbsp;&nbsp;&nbsp; Año: '+d.getFullYear());
+  </script>
+    
+  <div id="reloj" style="font-size:80px;"></div> 
+
+<hr>
+<br>
+<h1>Reservaciones</h1>
+<br>
+<a class="btn btn-success" href="{{url_for('createreservacion') }}"> Añadir </a>
+<br>
+<br>
+<table class="table table-dark table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Mesa</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in reservaciones %}
+        <tr>
+            <td> {{ registro[0] }}</td>
+
+            <td> {{ registro[1] }}</td>
+            <td> {{ registro[2] }}</td>
+            <td> {{ registro[3] }}</td>
+            <td> {{ registro[4] }}</td>
+            <td> {{ registro[5] }}</td>
+            <td>
+                <a class="btn btn-outline-primary" href="/editreservaciones/{{registro[0]}}" >Editar</a>
+                |
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal3">Eliminar</button>
+
+                <!----modal starts here--->
+                    <div id="deleteModal3" class="modal fade" role='dialog'>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Eliminar registro </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Seguro que quieres eliminar este registro?</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="/destroyreservacion/{{registro[0]}}">
+                                        <input type="submit" class="btn btn-danger" value="Eliminar Usuario">
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <span id= 'deleteButton'></span>
+                                </div>
+
+                            </div>
+                          </div>
+                      </div>
+                    <!--Modal ends here--->
+
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'footer.html' %}

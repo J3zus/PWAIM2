@@ -1,0 +1,61 @@
+{% include 'header.html' %}
+
+
+<form id="news" method="post" action="/store" enctype="multipart/form-data">
+    <div class="card-header">
+    Ingresar Bebidas
+    </div>
+
+    <div class="card-body">
+        <div class="card-title text-center">
+            Datos de las Bebidas
+        </div>
+        <div class="card-text">
+
+            <div class="form-group">
+                <label for="txtNombre">Nombre:</label>
+                <input class="form-control" type="text" name="txtNombre" id="txtNombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtdescripcion">Descripcion:</label>
+                 <input class="form-control" type="text" name="txtdescripcion" id="txtdescripcion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="listtipo">Tipo:</label>
+                <select class="form-select form-select-lg mb-3" name="listtipo" id="listtipo" required>
+                    <option value="Alcoholica">Alcoholica</option>
+                    <option value="NoAlcholica">No Alcholica</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="txtcantidad">Cantidad:</label>
+                 <input class="form-control" type="number" name="txtcantidad" id="txtcantidad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtprecio">Precio ($):</label>
+                 <input class="form-control" type="number" name="txtprecio" id="txtprecio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtFoto">Foto:</label>
+                <input class="form-control" type="file" name="txtFoto" id="txtFoto" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-success">
+                |
+                <a href="{{ url_for('index') }}" class="btn btn-warning">Regresar</a>
+            </div>
+
+
+        </div>
+    </div>
+</form>
+
+{% include 'footer.html' %}

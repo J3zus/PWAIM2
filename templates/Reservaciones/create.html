@@ -1,0 +1,61 @@
+{% include 'header.html' %}
+
+
+<form id="news" method="post" action="/store3" enctype="multipart/form-data">
+    <div class="card-header">
+    Ingresar datos para agendar una reservacion
+    </div>
+
+    <div class="card-body">
+        <div class="card-title text-center">
+            Datos de la reservacion
+        </div>
+        <div class="card-text">
+
+            <div class="form-group">
+                <label for="txtNombre">Nombre:</label>
+                <input class="form-control" type="text" name="txtNombre" id="txtNombre" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtMesa">Mesa:</label>
+                <input class="form-control" type="number" name="txtMesa" id="txtMesa" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtFecha">Fecha:</label>
+                <input class="form-control" type="date" name="txtFecha" id="txtFecha" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtHora">Hora:</label>
+                <input class="form-control" type="time" name="txtHora" id="txtHora" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="txtprecio">Precio ($):</label>
+                 <input class="form-control" type="number" name="txtprecio" id="txtprecio" required>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-success">
+                |
+                <a href="{{ url_for('index') }}" class="btn btn-warning">Regresar</a>
+            </div>
+
+
+        </div>
+    </div>
+</form>
+
+{% include 'footer.html' %}
