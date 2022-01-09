@@ -1,13 +1,45 @@
 {% include 'header.html' %}
 
-<div>
-    <h1 class="display-1">Asociacion de Ingenieros Mecatronicos</h1>
-    <p class="h3">Hemos llegado a impulsar el desarrollo de la Ingeniería Mecatrónica en México. </p>
-    <p class="h2"> Ven a descubrirnos</p>
-    <input type="button" class="btn btn-outline-primary" value="Empecemos" />
-</div>
-<div>
+<div class="container" style="margin: 0; padding: 0; width: auto; max-width: 1600px; height: auto; overflow: hidden;">
+
+    <div class="row" >
+
+        <div class="col" style="padding-left: 50px;">
+            <br>
+            <h1 class="display-1 text-start">Asociacion de Ingenieros Mecatronicos</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="h3 text-end">Hemos llegado a impulsar el desarrollo de la Ingeniería Mecatrónica en México. </p>
+            <br>
+            <br>
+            <p class="h2 text-end"> Ven a descubrirnos</p>
+            <br>
+
+            <div style="float: right;" class="col-4">
+
+                <input type="button" class="btn btn-primary btn-lg" value="Empecemos" style="float: right" />
+
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+    
+        <div class="col" style="background-image: url('/static/black-bg.png'); background-position: center center; border: 1px solid; position: relative;">
+
+            <img title="AIM Logo Oficial" 
+            with="500" 
+            height="500" 
+            class="mx-auto d-block"
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"
+            src="{{url_for('static', filename='AIM.png')}}">
+
+        </div>
+    </div>
 
 </div>
+
 
 {% include 'footer.html' %}
