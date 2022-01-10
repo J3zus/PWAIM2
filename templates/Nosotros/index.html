@@ -1,0 +1,127 @@
+{% include 'header.html' %}
+
+<!-----------------------------------------            Nosotros Index         --------------------------------------------->
+
+<br>
+<br>
+<br>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem;">
+                <img src="{{url_for('static', filename='objetivos.png')}}" with="90" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Objetivos</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col">
+    
+            <div class="card" style="width: 18rem;">
+                <img src="{{url_for('static', filename='mision.png')}}" with="90" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Mision</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem;">
+                <img src="{{url_for('static', filename='vision.png')}}" with="90" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Vision</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <br>
+        </div>
+        
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{{url_for('static', filename='valores.png')}}" with="90" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Valores</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col" style="text-align:center">
+
+            <br>
+            
+            <h1 class="display-1">Equipo AIM</h1>
+            <h6 class="display-6">Te presentamos al equipo que forma parte de esta asociacion</h3>
+
+            <style>
+                h1{
+                    display: inline-block;
+                    position: relative;
+                }
+
+                h1::after,h1::before{
+                    content:'';
+                    position: absolute;
+                    width:320px;
+                    height:3px;
+                    background-color:black;
+                    top: 0.7em;
+                    transform:scale(0);
+                    transition: all 0.1s ease-in 0.3s;
+
+                }
+
+                h1:hover::before, h1:hover::after{
+                    transform:scale(1);
+                }
+
+                h1::before{
+                    left: -340px;
+                }
+
+                h1::after{
+                    right: -340px;
+                }
+            </style>
+            <br>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

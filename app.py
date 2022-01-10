@@ -27,8 +27,8 @@ def indexme():
     return render_template('Menu.html')
 
 
-@app.route('/indexbe')
-def indexbe():
+@app.route('/nosotros')
+def nosotros():
 
     sql = "SELECT * FROM `bebidas`;"
     conn = mysql.connect()
@@ -38,10 +38,10 @@ def indexbe():
     bebidas = cursor.fetchall()
 
     conn.commit()
-    return render_template('Bebidas/index.html', bebidas=bebidas)
+    return render_template('Nosotros/index.html', bebidas=bebidas)
 
-@app.route('/indexbo')
-def indexbo():
+@app.route('/comunidades')
+def comunidades():
 
     sql2 = "SELECT * FROM `botana`;"
     conn2 = mysql.connect()
@@ -52,7 +52,7 @@ def indexbo():
 
     conn2.commit()
 
-    return render_template('botana/index.html', botanas=botanas)
+    return render_template('Comunidades/index.html', botanas=botanas)
 
 @app.route('/indexre')
 def indexre():
