@@ -54,8 +54,8 @@ def comunidades():
 
     return render_template('Comunidades/index.html', botanas=botanas)
 
-@app.route('/indexre')
-def indexre():
+@app.route('/eventos')
+def eventos():
 
     sql3 = "SELECT * FROM `reservaciones`;"
     conn3 = mysql.connect()
@@ -65,7 +65,7 @@ def indexre():
     reservaciones = cursor3.fetchall()
 
     conn3.commit()
-    return render_template('Reservaciones/index.html', reservaciones=reservaciones)
+    return render_template('Eventos/index.html', reservaciones=reservaciones)
 
 
 
