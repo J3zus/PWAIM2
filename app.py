@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for,session
 from flaskext.mysql import MySQL
 from datetime import datetime
 from flask import send_from_directory
@@ -11,7 +11,7 @@ mysql = MySQL()
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-app.config['MYSQL_DATABASE_DB'] = 'si'
+app.config['MYSQL_DATABASE_DB'] = 'ejdbaim'
 mysql.init_app(app)
 
 CARPETA = os.path.join('uploads')
@@ -22,9 +22,15 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/indexme')
-def indexme():
-    return render_template('Menu.html')
+@app.route('/home')
+def home():
+
+    # Check if user is loggedin
+    if 'loggedin' in session:
+        # User is loggedin show them the home page
+        return render_template('Sesion/home.html', usuario=session['username'])
+    # User is not loggedin redirect to login page
+    return render_template('Sesion/index.html')
 
 
 @app.route('/nosotros')
@@ -70,9 +76,9 @@ def eventos():
 
 
 
-@app.route('/createbebidas')
-def createbebidas():
-    return render_template('Bebidas/create.html')
+@app.route('/Sesion')
+def Sesion():
+    return render_template('Sesion/index.html')
 
 @app.route('/createbotanas')
 def createbotanas():
@@ -106,28 +112,41 @@ def storage():
     conn.commit()
     return redirect('/indexbe')
 
-@app.route('/store2', methods=['POST'])
-def storage2():
-    _nombre = request.form['txtNombre']
-    _descripcion = request.form['txtdescripcion']
-    _precio = request.form['txtprecio']
-    _cantidad = request.form['txtcantidad']
-    _imagen = request.files['txtFoto']
+@app.route('/login', methods=['GET','POST'])
+def login():
 
-    now = datetime.now()
-    tiempo = now.strftime("%Y%H%M%S")
+    msg = ''
 
-    if _imagen.filename != '':
-        nuevoNombre = tiempo + _imagen.filename
-        _imagen.save("uploads/"+nuevoNombre)
+    # Check if "username" and "password" POST requests exist (user submitted form)
+    if request.method == 'POST' and 'txtUsuario' in request.form and 'txtPusario' in request.form:
+        # Create variables for easy access
+        _username = request.form['txtUsuario']
+        _password = request.form['txtPusario']
 
-    sql = "insert into `botana` (`Id`, `Nombre`, `Descripcion`, `Cantidad`, `Precio`, `Imagen`) VALUES(NULL, %s, %s, %s, %s, %s);"
-    datos = (_nombre, _descripcion, _cantidad, _precio, nuevoNombre)
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute(sql, datos)
-    conn.commit()
-    return redirect('/indexbo')
+        sql   = "SELECT * FROM user WHERE User = %s AND Password = %s"
+        datos = (_username, _password)
+
+        # Check if account exists using MySQL
+
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql, datos)
+
+        # Fetch one record and return result
+        login = cursor.fetchone()
+        # If account exists in accounts table in out database
+        if login:
+            # Create session data, we can access this data in other routes
+            session['loggedin'] = True
+            session['Id'] = login['Id']
+            session['username'] = login['User']
+            # Redirect to home page
+            return 'Logged in successfully!'
+        else:
+            # Account doesnt exist or username/password incorrect
+            msg = 'Incorrect username/password!'
+    # Show the login form with message (if any)
+    return render_template('index.html', msg=msg)
 
 @app.route('/store3', methods=['POST'])
 def storage3():

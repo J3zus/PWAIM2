@@ -1,0 +1,65 @@
+{% include 'header.html' %}
+
+<!-----------------------------------------            Comunidades Index         --------------------------------------------->
+
+
+
+<div class="container col-xs-12" style="margin: 0; padding: 10px; width: auto; max-width: 1600px; height: 720px; overflow: hidden; background-image: url('/static/Comunidad_SC1.png'); ">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div class="col-xs-12" style="justify-content: center; align-items: center; display: flex; ">
+        <form id="news" method="post" action="/login" enctype="multipart/form-data">
+            <br>
+
+            <div class="card" style=" min-width: 100px; max-width: 800px;">
+
+                <div class="card-body">
+
+                    <h3 class="display-4 ">Iniciar sesion</h3>
+
+                    <div class="card-title">
+                        Si ya cuentas con tu usuario y contraseña, favor de iniciar sesion.
+                    </div>
+
+                    <div class="card-text">
+                        
+                        <div class="form-floating">
+                            <input class="form-control" type="email" name="txtUsuario" id="txtUsuario" placeholder="Correo electronico" autofocus required>
+                            <label for="txtUsuario">Usuario</label>
+                            
+                        </div>
+
+                        <br>
+            
+                        <div class="form-floating">
+                            <input class="form-control" type="password" name="txtPusario" id="txtPusario" placeholder="password" required>
+                            <label for="txtPusario">Contraseña</label>
+                        </div>
+            
+                        <br>
+            
+                        <div class="form-group" style="align-items: right; justify-content:right;">
+                            <input type="submit" value="Agregar" class="btn btn-success">
+                            |
+                            <a href="{{ url_for('index') }}" class="btn btn-warning">Cancelar</a>
+                        </div>
+            
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}
