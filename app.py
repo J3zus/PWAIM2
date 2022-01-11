@@ -6,6 +6,7 @@ from flask import send_from_directory
 import os
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 mysql = MySQL()
 app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
@@ -19,18 +20,21 @@ app.config['CARPETA']= CARPETA
 
 @app.route('/')
 def index():
+
     return render_template('index.html')
 
 
 @app.route('/home')
 def home():
 
+    msg = 'Incorrect username/password!'
+
     # Check if user is loggedin
     if 'loggedin' in session:
         # User is loggedin show them the home page
-        return render_template('Sesion/home.html', usuario=session['username'])
+        return render_template('Sesion/Home.html', usuario=session['username'])
     # User is not loggedin redirect to login page
-    return render_template('Sesion/index.html')
+    return render_template('Sesion/index.html', msg=msg)
 
 
 @app.route('/nosotros')
@@ -138,15 +142,15 @@ def login():
         if login:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            session['Id'] = login['Id']
-            session['username'] = login['User']
+            session['Id'] = login[0]
+            session['username'] = login[1]
             # Redirect to home page
-            return 'Logged in successfully!'
+            return redirect(url_for('home'))
         else:
             # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
+            return redirect(url_for('home'))
     # Show the login form with message (if any)
-    return render_template('index.html', msg=msg)
+    return render_template('Sesion/Home.html')
 
 @app.route('/store3', methods=['POST'])
 def storage3():
