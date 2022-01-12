@@ -40,49 +40,25 @@ def home():
 @app.route('/nosotros')
 def nosotros():
 
-    sql = "SELECT * FROM `bebidas`;"
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute(sql)
-
-    bebidas = cursor.fetchall()
-
-    conn.commit()
-    return render_template('Nosotros/index.html', bebidas=bebidas)
+    return render_template('Nosotros/index.html')
 
 @app.route('/comunidades')
 def comunidades():
 
-    sql2 = "SELECT * FROM `botana`;"
-    conn2 = mysql.connect()
-    cursor2 = conn2.cursor()
-    cursor2.execute(sql2)
-
-    botanas = cursor2.fetchall()
-
-    conn2.commit()
-
-    return render_template('Comunidades/index.html', botanas=botanas)
+    return render_template('Comunidades/index.html')
 
 @app.route('/eventos')
 def eventos():
 
-    sql3 = "SELECT * FROM `reservaciones`;"
-    conn3 = mysql.connect()
-    cursor3 = conn3.cursor()
-    cursor3.execute(sql3)
-
-    reservaciones = cursor3.fetchall()
-
-    conn3.commit()
-    return render_template('Eventos/index.html', reservaciones=reservaciones)
+    return render_template('Eventos/index.html')
 
 
 
 
 @app.route('/Sesion')
 def Sesion():
-    return render_template('Sesion/index.html')
+    flag=1
+    return render_template('Sesion/index.html', flag=flag)
 
 @app.route('/createbotanas')
 def createbotanas():
@@ -120,6 +96,7 @@ def storage():
 def login():
 
     msg = ''
+    flag=1
 
     # Check if "username" and "password" POST requests exist (user submitted form)
     if request.method == 'POST' and 'txtUsuario' in request.form and 'txtPusario' in request.form:
@@ -148,7 +125,9 @@ def login():
             return redirect(url_for('home'))
         else:
             # Account doesnt exist or username/password incorrect
-            return redirect(url_for('home'))
+            flag = 0
+            return render_template('Sesion/index.html', flag=flag)
+            
     # Show the login form with message (if any)
     return render_template('Sesion/Home.html')
 

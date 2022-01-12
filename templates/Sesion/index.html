@@ -39,9 +39,40 @@
                             <input class="form-control" type="password" name="txtPusario" id="txtPusario" placeholder="password" required>
                             <label for="txtPusario">Contraseña</label>
                         </div>
+
+                        <br>
+
+                        <div id="liveAlertPlaceholder"></div>
+
+                        <script>
+                            var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+                            var alertTrigger = '{{ flag }}'
+                            console.log(alertTrigger)
+                            function alert(message, type) {
+                                var wrapper = document.createElement('div')
+                                wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '</div>'
+
+                                alertPlaceholder.append(wrapper)
+                            }
+
+                            function alert1() {
+                                var wrapper = document.createElement('div')
+                                wrapper.innerHTML = '<div></div>'
+
+                                alertPlaceholder.append(wrapper)
+                            }
+
+                            if(alertTrigger!=0){
+                                alert1()
+                            }else{
+                                alert('Usuario o contraseña incorrectos', 'danger')
+                            }
+                                
+                        </script>
+
+                        
             
                         <br>
-                        <label>{{msg}}</label>
             
                         <div class="form-group" style="align-items: right; justify-content:right;">
                             <input type="submit" value="Agregar" class="btn btn-success">
