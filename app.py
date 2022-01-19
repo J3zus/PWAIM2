@@ -131,21 +131,22 @@ def login():
     # Show the login form with message (if any)
     return render_template('Sesion/Home.html')
 
-@app.route('/store3', methods=['POST'])
-def storage3():
-    _nombre = request.form['txtNombre']
-    _mesa = request.form['txtMesa']
-    _precio = request.form['txtprecio']
-    _fecha = request.form['txtFecha']
-    _Hora = request.form['txtHora']
-
-    sql = "insert into `reservaciones` (`Id`, `Nombre`, `Mesa`, `Fecha`, `Hora`, `Precio`) VALUES(NULL, %s, %s, %s, %s, %s);"
-    datos = (_nombre, _mesa,_fecha, _Hora, _precio)
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute(sql, datos)
-    conn.commit()
-    return redirect('/indexre')
+@app.route('/login/profile', methods=['POST'])
+def profile():
+    #Check if user is loggedin
+    if 'loggedin' in session:
+         # We need all the account info for the user so we can display it on the profile page
+        sql   = "SELECT * FROM user WHERE Id = %s"
+        datos = (session['Id'])
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql, datos)
+        loginV = cursor.fetchone()
+        # Show the profile page with account info
+        return render_template('Sesion/Home.html', loginV=loginV)
+        
+    
+    return redirect('/Sesion')
 
 @app.route('/destroybebidas/<int:id>')
 def destroybebidas(id):
