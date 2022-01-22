@@ -1,55 +1,89 @@
 {% include 'header.html' %}
 
-<!-----------------------------------------            Comunidades Index         --------------------------------------------->
+
 
 <div class="container" style="margin: 0; padding: 0; width: auto; max-width: 1600px; height: auto; overflow: hidden;">
 
+    <!-----------------------------------------            Comunidades Index         --------------------------------------------->
+
     <div class="row" style="background-image: url('/static/Comunidad_SC1.png'); background-position: center center; border: 1px solid; position: relative;">
 
-        <div class="row" style="padding-left: 50px;">
-            <br>
-            <h3 class="display-4 text-white">
+        <div class="row" style="margin: 40px 50px;">
+            <h2 class="display-3 text-white">
                 Beneficios de ser parte de AIM:
-            </h3>
+            </h2>
+            
         </div>
 
-        <div class="col text-white" style=" padding-left:60px" >
-            <br>
-            <h5>Aumentar la interacción entre los capítulos estudiantiles y AIM.</h5>
-            <br>
-            <h5>Complementar los esfuerzos de
-                las actuales actividades de los
-                estudiantes y AIM.</h5>
-            <br>
-            <h5>Mejorar la retención de los miembros
-                recién graduados.</h5>
-            <br>
-            <h5>Proporcionar a los miembros estudiantiles
-                una visión amplia de AIM, y sus
-                múltiples actividades y beneficios.
+        <div class="col text-white" style=" padding-left:60px; text-align: center;" >
+
+            <div class="col text-white" style="margin:10px 80px 80px 80px; text-align: center;">
+
+                <br>
+                <h5>Aumentar la interacción entre los capítulos estudiantiles y AIM.</h5>
+                <br>
+                <h5>Complementar los esfuerzos de
+                    las actuales actividades de los
+                    estudiantes y AIM.</h5>
+                <br>
+                <h5>Mejorar la retención de los miembros
+                    recién graduados.</h5>
+                <br>
+                <h5>Proporcionar a los miembros estudiantiles
+                    una visión amplia de AIM, y sus
+                    múltiples actividades y beneficios.
                 </h5>
-            <br>
-            <h5>Mejorar la cooperación entre
-                estudiantes- profesores-industria.</h5>
-            <br>
-            <h5>Aumentar la participación de los miembros
-                jóvenes en actividades de AIM</h5>
+                <br>
+                <h5>Mejorar la cooperación entre
+                    estudiantes- profesores-industria.</h5>
+                <br>
+                <h5>Aumentar la participación de los miembros
+                    jóvenes en actividades de AIM</h5>
+
+            </div> 
             
         </div>
+        
 
-        <div class="col" style="background-color:orange;">
-            
+        <div class="col" style=" border: 1px; position: relative;">
+            <img title="AIM Logo Oficial" 
+            with="400" 
+            height="400" 
+            class="mx-auto d-block"
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"
+            src="{{url_for('static', filename='AIM.png')}}">
+        </div>
+
+    </div>
+
+    <!-----------------------------------------            Comunidades Index 2        --------------------------------------------->
+
+    <div class="row">
+
+        <div class="col"style="margin: 3% 3% 0% 3%;">
+            <div  style="background-color: #01e2ff;">
+                <br>
+                <div style="background-color: #ffd800; margin-right: 10%;">
+                    <h1>COMO AFILIARTE A NUESTRO EQUIPO</h1>
+                </div>
+            </div>
         </div>
 
     </div>
 
     <div class="row">
+        <div class="col" style="margin:1% 3% 3% 3%;">
+            <img title="Unete"
+            class="img-thumbnail"
+            src="{{url_for('static', filename='SAfiliarte.png')}}">
 
-        <div class="col" style="text-align:center">
-
-            
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col" style="text-align:center; margin:5% 5% 5% 5%;" >
+            <button type="button" class="btn btn-primary btn-lg alig">Large button</button>
+        </div>
     </div>
 
 </div>

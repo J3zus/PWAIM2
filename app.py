@@ -29,12 +29,14 @@ def home():
 
     msg = 'Incorrect username/password!'
 
+
+
     # Check if user is loggedin
     if 'loggedin' in session:
         # User is loggedin show them the home page
         return render_template('Sesion/Home.html', usuario=session['username'])
     # User is not loggedin redirect to login page
-    return render_template('Sesion/index.html', msg=msg)
+    return render_template('Sesion/index.html',msg=msg, )
 
 
 @app.route('/nosotros')

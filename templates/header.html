@@ -47,13 +47,14 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          <form class="container-fluid justify-content-start text-right">
+            <form class="container-fluid justify-content-start text-right">
+              
+              <button class="btn btn-outline-warning" type="button">Registrarse</button>
+              <label class="text-white">|</label>
             
-            <button class="btn btn-outline-warning" type="button">Registrarse</button>
-            <label class="text-white">|</label>
-            <a class="btn btn-outline-primary" href="{{ url_for('Sesion')}}">Iniciar Sesion</a>
+              <a class="btn btn-outline-primary" href="{{ url_for('Sesion')}}">{{usuario}}</a>
 
-          </form>
+            </form>
           </ul>
 
         </div>
